@@ -1,21 +1,8 @@
 package com.rkm.database.models
 
 import androidx.room.ColumnInfo
-import androidx.room.Entity
-import androidx.room.ForeignKey
-import androidx.room.PrimaryKey
 
-@Entity(tableName = "astro",
-    foreignKeys = [ForeignKey(
-        entity = LocationEntity::class,
-        parentColumns = ["id"],
-        childColumns = ["location_id"],
-        onDelete = ForeignKey.CASCADE
-    )]
-)
 data class AstroEntity(
-    @PrimaryKey
-    @ColumnInfo(name = "location_id") val locationId: Int = 0,
     @ColumnInfo(name = "sunrise") val sunrise: String,
     @ColumnInfo(name = "sunset") val sunset: String,
     @ColumnInfo(name = "moonrise") val moonrise: String,

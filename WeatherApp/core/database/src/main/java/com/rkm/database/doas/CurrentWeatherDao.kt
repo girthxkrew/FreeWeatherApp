@@ -14,13 +14,13 @@ internal interface CurrentWeatherDao {
     @Upsert
     suspend fun upsertCurrentWeather(currentWeather: CurrentWeatherEntity)
 
-    @Query("SELECT * FROM current_weather WHERE locationId = :id")
-    suspend fun getCurrentWeatherById(id: Int): CurrentWeatherEntity
+    @Query("SELECT * FROM current_weather WHERE location_id = :id")
+    suspend fun getCurrentWeatherById(id: Int): CurrentWeatherEntity?
 
     @Query("SELECT * FROM current_weather")
-    suspend fun getAllCurrentWeather(): List<CurrentWeatherEntity>
+    suspend fun getAllCurrentWeather(): List<CurrentWeatherEntity>?
 
-    @Query("DELETE FROM current_weather WHERE locationId = :id")
+    @Query("DELETE FROM current_weather WHERE location_id = :id")
     suspend fun deleteCurrentWeatherById(id: Int)
 
 }

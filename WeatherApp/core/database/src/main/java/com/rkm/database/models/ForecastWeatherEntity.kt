@@ -16,7 +16,7 @@ import androidx.room.PrimaryKey
 )
 data class ForecastWeatherEntity(
     @PrimaryKey @ColumnInfo(name = "location_id") val locationId: Int,
-    @ColumnInfo(name = "date") val date: String,
+    val date: String,
     @ColumnInfo(name = "date_epoch") val dateEpoch: Long,
     @Embedded val day: ForecastDayEntity,
     @Embedded val astro: AstroEntity

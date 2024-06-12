@@ -1,8 +1,7 @@
 package com.rkm.network.retrofit
 
-import com.rkm.network.BuildConfig
 import com.rkm.network.models.ForecastedWeather.ForecastedWeatherResponse
-import com.rkm.network.repository.ForecastedWeatherRemoteDataSource
+import com.rkm.network.datasource.ForecastedWeatherRemoteDataSource
 import retrofit2.Response
 import retrofit2.http.GET
 import retrofit2.http.Query

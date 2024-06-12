@@ -47,7 +47,6 @@ data class CurrentWeatherEntity(
     @ColumnInfo(name = "uv") val uvIndex: Int,
     @ColumnInfo(name = "gust_mph") val gustMph: Double,
     @ColumnInfo(name = "gust_kph") val gustKph: Double,
-    @ColumnInfo(name = "air_quality")
     @Embedded val airQuality: AirQualityEntity
 
 )

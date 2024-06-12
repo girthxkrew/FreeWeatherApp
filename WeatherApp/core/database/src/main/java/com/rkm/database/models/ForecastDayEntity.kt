@@ -2,23 +2,8 @@ package com.rkm.database.models
 
 import androidx.room.ColumnInfo
 import androidx.room.Embedded
-import androidx.room.Entity
-import androidx.room.ForeignKey
-import androidx.room.PrimaryKey
 
-@Entity(tableName = "forecast_day",
-    foreignKeys = [ForeignKey(
-        entity = LocationEntity::class,
-        parentColumns = ["id"],
-        childColumns = ["location_id"],
-        onDelete = ForeignKey.CASCADE
-    )]
-)
 data class ForecastDayEntity(
-    @PrimaryKey
-    @ColumnInfo(name = "location_id") val locationId: Int,
-    @ColumnInfo(name = "date") val date: String,
-    @ColumnInfo(name = "date_epoch") val dateEpoch: Long,
     @ColumnInfo(name = "maxtemp_c") val maxTemperatureCelsius: Double,
     @ColumnInfo(name = "maxtemp_f") val maxTemperatureFahrenheit: Double,
     @ColumnInfo(name = "mintemp_c") val minTemperatureCelsius: Double,

@@ -1,4 +1,4 @@
-package com.rkm.network.repository
+package com.rkm.network.datasource
 
 import com.rkm.network.models.CurrentWeather.CurrentWeatherResponse
 import retrofit2.Response

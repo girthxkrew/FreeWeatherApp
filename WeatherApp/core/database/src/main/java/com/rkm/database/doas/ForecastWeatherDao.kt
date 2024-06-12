@@ -12,10 +12,10 @@ internal interface ForecastWeatherDao {
     suspend fun upsertForecastWeather(forecastWeather: ForecastWeatherEntity)
 
     @Query("SELECT * FROM forecast_weather WHERE location_id = :id")
-    suspend fun getForecastWeatherByLocationId(id: Int): ForecastWeatherEntity
+    suspend fun getForecastWeatherByLocationId(id: Int): ForecastWeatherEntity?
 
     @Query("SELECT * FROM forecast_weather")
-    suspend fun getAllForecastWeather(): List<ForecastWeatherEntity>
+    suspend fun getAllForecastWeather(): List<ForecastWeatherEntity>?
 
     @Query("DELETE FROM forecast_weather WHERE location_id = :id")
     suspend fun deleteForecastWeatherByLocationId(id: Int)

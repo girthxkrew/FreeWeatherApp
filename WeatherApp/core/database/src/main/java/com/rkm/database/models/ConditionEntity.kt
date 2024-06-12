@@ -1,8 +1,8 @@
 package com.rkm.database.models
 
 import androidx.room.Entity
+import androidx.room.PrimaryKey
 
-@Entity(tableName = "condition")
 data class ConditionEntity(
     val text: String,
     val icon: String,

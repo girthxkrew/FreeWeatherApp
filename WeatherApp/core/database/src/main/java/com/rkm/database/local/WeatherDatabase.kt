@@ -16,10 +16,10 @@ import com.rkm.database.models.HourlyForecastEntity
 import com.rkm.database.models.LocationEntity
 
 @Database(
-    entities = [AirQualityEntity::class, AstroEntity::class, ConditionEntity::class,
-        CurrentWeatherEntity::class, ForecastWeatherEntity::class, ForecastDayEntity::class,
-        HourlyForecastEntity::class, LocationEntity::class],
-    version = 1
+    entities = [CurrentWeatherEntity::class, ForecastWeatherEntity::class, HourlyForecastEntity::class,
+        LocationEntity::class],
+    version = 1,
+    exportSchema = false
 )
 internal abstract class WeatherDatabase: RoomDatabase() {
 

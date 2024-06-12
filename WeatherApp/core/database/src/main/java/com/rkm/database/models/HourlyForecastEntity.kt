@@ -4,6 +4,7 @@ import androidx.room.ColumnInfo
 import androidx.room.Embedded
 import androidx.room.Entity
 import androidx.room.ForeignKey
+import androidx.room.Index
 import androidx.room.PrimaryKey
 
 @Entity(tableName = "hourly_forecast", foreignKeys = [
@@ -12,8 +13,9 @@ import androidx.room.PrimaryKey
         parentColumns = ["id"],
         childColumns = ["location_id"],
         onDelete = ForeignKey.CASCADE
-    )
-])
+    )],
+    indices = [Index(value = ["location_id"])]
+)
 data class HourlyForecastEntity(
     @PrimaryKey(autoGenerate = true)
     @ColumnInfo(name = "id") val id: Int = 0,

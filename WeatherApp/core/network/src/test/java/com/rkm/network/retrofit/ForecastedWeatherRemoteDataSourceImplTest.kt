@@ -26,6 +26,10 @@ class ForecastedWeatherRemoteDataSourceImplTest {
     private val successBodyFilePath = "src/test/resources/forecastedWeatherResponseBody200.json"
     private val errorBodyFilePath = "src/test/resources/forecastedWeatherResponseBody400.json"
     private val dispatcher = StandardTestDispatcher()
+    private val validCity = "London"
+    private val invalidCity = ""
+    private val airQuality = "yes"
+    private val days = 10
 
     @Before
     fun setUp() {
@@ -40,13 +44,13 @@ class ForecastedWeatherRemoteDataSourceImplTest {
 
     @OptIn(ExperimentalCoroutinesApi::class)
     @Test
-    fun `successful forecasted weather response`()  = runTest(dispatcher.scheduler) {
+    fun `successful forecasted weather response because valid city`()  = runTest(dispatcher.scheduler) {
         val responseBody = File(successBodyFilePath).readText()
         val result = gson.fromJson(responseBody, ForecastedWeatherResponse::class.java)
         val successResponse = MockResponse().setResponseCode(200).setBody(responseBody)
         mockWebServer.enqueue(successResponse)
 
-        val response = dataSource.getForecastedWeatherByCity("London", "yes", 10)
+        val response = dataSource.getForecastedWeatherByCity(validCity, airQuality, days)
 
         advanceUntilIdle()
 
@@ -57,12 +61,12 @@ class ForecastedWeatherRemoteDataSourceImplTest {
 
     @OptIn(ExperimentalCoroutinesApi::class)
     @Test
-    fun `error forecasted weather response`() = runTest(dispatcher.scheduler) {
+    fun `error forecasted weather response because invalid city`() = runTest(dispatcher.scheduler) {
         val responseBody = File(errorBodyFilePath).readText()
         val errorResponse = MockResponse().setResponseCode(400).setBody(responseBody)
         mockWebServer.enqueue(errorResponse)
 
-        val response = dataSource.getForecastedWeatherByCity("", "yes", 10)
+        val response = dataSource.getForecastedWeatherByCity(invalidCity, airQuality, days)
 
         advanceUntilIdle()
 

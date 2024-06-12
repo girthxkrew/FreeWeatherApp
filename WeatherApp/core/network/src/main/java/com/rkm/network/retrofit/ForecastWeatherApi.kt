@@ -18,16 +18,14 @@ internal interface ForecastedWeatherApi {
     suspend fun getForecastedWeatherByCity(
         @Query("q") city: String,
         @Query("days") days: Int,
-        @Query("aqi") airQuality: String,
-        @Query("key") apiKey: String = BuildConfig.API_KEY
+        @Query("aqi") airQuality: String
     ): Response<ForecastedWeatherResponse>
 
     @GET(ForecastedWeatherEndPoints.FORECASTED_WEATHER)
     suspend fun getForecastedWeatherByCoordinates(
         @Query("q") coordinates: String,
         @Query("days") days: Int,
-        @Query("aqi") airQuality: String,
-        @Query("key") apiKey: String = BuildConfig.API_KEY
+        @Query("aqi") airQuality: String
     ): Response<ForecastedWeatherResponse>
 }
 

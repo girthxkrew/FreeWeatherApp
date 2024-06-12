@@ -1,14 +1,10 @@
-import java.util.Properties
-
 plugins {
     alias(libs.plugins.android.library)
     alias(libs.plugins.jetbrains.kotlin.android)
-    alias(libs.plugins.hilt.plugin)
-    alias(libs.plugins.ksp.plugin)
 }
 
 android {
-    namespace = "com.rkm.network"
+    namespace = "com.rkm.database"
     compileSdk = 34
 
     defaultConfig {
@@ -16,13 +12,6 @@ android {
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         consumerProguardFiles("consumer-rules.pro")
-
-        val apiProperties = project.rootProject.file("api.properties")
-        val properties = Properties()
-        properties.load(apiProperties.inputStream())
-
-        buildConfigField("String", "BASE_URL", "\"https://api.weatherapi.com/v1/\"")
-        buildConfigField("String", "API_KEY", properties.getProperty("API_KEY") ?: "")
     }
 
     buildTypes {
@@ -41,10 +30,6 @@ android {
     kotlinOptions {
         jvmTarget = "1.8"
     }
-
-    buildFeatures {
-        buildConfig = true
-    }
 }
 
 dependencies {
@@ -52,15 +37,7 @@ dependencies {
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)
     implementation(libs.material)
-    implementation(libs.retrofit)
-    implementation(libs.retrofit.converter.gson)
-    implementation(libs.hilt)
-    implementation(platform(libs.okhttp.bom))
-    implementation(libs.okhttp)
-    ksp(libs.hilt.compiler)
     testImplementation(libs.junit)
-    testImplementation(libs.mock.web.server)
-    testImplementation(libs.kotlin.coroutines.testing)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
 }

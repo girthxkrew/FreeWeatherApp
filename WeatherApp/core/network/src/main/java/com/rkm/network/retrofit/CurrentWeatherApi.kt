@@ -17,14 +17,12 @@ internal interface CurrentWeatherApi {
 
     @GET(CurrentWeatherEndPoints.CURRENT_WEATHER)
     suspend fun getCurrentLocationByCity(
-        @Query("q") city: String,
-        @Query("key") apiKey: String = BuildConfig.API_KEY
+        @Query("q") city: String
     ): Response<CurrentWeatherResponse>
 
     @GET(CurrentWeatherEndPoints.CURRENT_WEATHER)
     suspend fun getCurrentWeatherByCoordinates(
-        @Query("q") coordinates: String,
-        @Query("key") apiKey: String = BuildConfig.API_KEY
+        @Query("q") coordinates: String
     ): Response<CurrentWeatherResponse>
 }
 

@@ -9,7 +9,7 @@ import retrofit2.http.Query
 import javax.inject.Inject
 import javax.inject.Singleton
 
-private object ForecastedWeatherEndPoints{
+internal object ForecastedWeatherEndPoints{
     const val FORECASTED_WEATHER = "forecast.json"
 }
 internal interface ForecastedWeatherApi {

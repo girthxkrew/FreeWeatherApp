@@ -13,6 +13,12 @@ import androidx.room.PrimaryKey
         parentColumns = ["id"],
         childColumns = ["location_id"],
         onDelete = ForeignKey.CASCADE
+    ),
+    ForeignKey(
+        entity = ForecastWeatherEntity::class,
+        parentColumns = ["location_id"],
+        childColumns = ["location_id"],
+        onDelete = ForeignKey.CASCADE,
     )],
     indices = [Index(value = ["location_id"])]
 )
